@@ -1,2 +1,84 @@
-sum(A[:j]) = sum(A[:i]) + k 
-sum(A[:j]) - k = sum(A[:i])
+1class Solution {
+2public:
+3    int subarraySum(vector<int>& nums, int k) {
+4        if (nums.empty()) return 0;
+5        int n=nums.size();
+6        int count=0;
+7
+8        vector<int>prefixSum(n,0);
+9        prefixSum[0]=nums[0];
+10        for(int i=1 ; i<n ; i++){
+11            prefixSum[i]=prefixSum[i-1]+nums[i];
+12        }
+13
+14        unordered_map<int,int>map;
+15        for(int j=0;j<n;j++){
+16        if(prefixSum[j]==k) count++;
+17        int val=prefixSum[j]-k; // k=prefixSum[j]-prefixSum[i-1];
+18        if(map.count(val)) count=count+map[val];
+19         if(map.find(prefixSum[j])==map.end()){
+20            map[prefixSum[j]]=0;
+21         }
+22         map[prefixSum[j]]++;
+23         }
+24         return count;
+25    }
+26};
+27
+28// class Solution {
+29// public:
+30//     int subarraySum(vector<int>& nums, int k) {
+31//         unordered_map<int, int> mp;  // prefixSum → frequency
+32//         mp[0] = 1;  // base case: prefix sum exactly equal to k
+33
+34//         int prefixSum = 0;
+35//         int count = 0;
+36
+37//         for (int x : nums) {
+38//             prefixSum += x;
+39
+40//             int need = prefixSum - k;
+41
+42//             // if that needed sum existed before, add all its occurrences
+43//             if (mp.count(need)) {
+44//                 count += mp[need];
+45//             }
+46
+47//             mp[prefixSum]++;  // store/update current prefix sum
+48//         }
+49
+50//         return count;
+51//     }
+52// };
+53// class Solution {
+54// public:
+55//     int subarraySum(vector<int>& nums, int k) {
+56
+57//         unordered_map<int, int> mp;  // prefixSum → frequency
+58//         mp[0] = 1;  // base case
+59
+60//         int prefixSum = 0;
+61//         int count = 0;
+62
+63//         for (int i = 0; i < nums.size(); i++) {
+64
+65//             prefixSum += nums[i];
+66
+67//             int need = prefixSum - k;
+68
+69//             // check if 'need' prefix exists
+70//             if (mp.find(need) != mp.end()) {
+71//                 count += mp[need];
+72//             }
+73
+74//             // store/update current prefix sum
+75//             if (mp.find(prefixSum) == mp.end()) {
+76//                 mp[prefixSum] = 1;
+77//             } else {
+78//                 mp[prefixSum]++;
+79//             }
+80//         }
+81
+82//         return count;
+83//     }
+84// };
