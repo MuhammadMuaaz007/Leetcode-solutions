@@ -1,0 +1,98 @@
+1#include <vector>
+2using namespace std;
+3
+4class MyHashSet {
+5private:
+6    int size = 1000;                     // number of buckets
+7    vector<vector<int>> buckets;         // 2D vector: each row = one bucket
+8
+9    // Hash function: returns bucket index
+10    int hash(int key) {
+11        return key % size;
+12    }
+13
+14public:
+15    // Constructor: initialize all buckets
+16    MyHashSet() {
+17        buckets.resize(size);           // creates 1000 empty buckets
+18    }
+19
+20    // Add key to HashSet
+21    void add(int key) {
+22        int index = hash(key);
+23
+24        // SIMPLE loop to check if key already exists
+25        for (int i = 0; i < buckets[index].size(); i++) {
+26            if (buckets[index][i] == key) {
+27                return;   // key already exists
+28            }
+29        }
+30
+31        // Insert key into bucket
+32        buckets[index].push_back(key);
+33    }
+34
+35    // Remove key from HashSet
+36    void remove(int key) {
+37        int index = hash(key);
+38        int bucketSize = buckets[index].size();
+39
+40        // SIMPLE loop to find and erase key
+41        for (int i = 0; i < bucketSize; i++) {
+42            if (buckets[index][i] == key) {
+43                // Shift elements left to remove key
+44                for (int j = i; j < bucketSize - 1; j++) {
+45                    buckets[index][j] = buckets[index][j + 1];
+46                }
+47                buckets[index].pop_back();  // remove last duplicate
+48                return;
+49            }
+50        }
+51    }
+52
+53    // Check if HashSet contains the key
+54    bool contains(int key) {
+55        int index = hash(key);
+56
+57        // SIMPLE loop to search key
+58        for (int i = 0; i < buckets[index].size(); i++) {
+59            if (buckets[index][i] == key) {
+60                return true;
+61            }
+62        }
+63
+64        return false;
+65    }
+66};
+67
+68
+69
+70/**
+71 * Your MyHashSet object will be instantiated and called as such:
+72 * MyHashSet* obj = new MyHashSet();
+73 * obj->add(key);
+74 * obj->remove(key);
+75 * bool param_3 = obj->contains(key);
+76 */
+77
+78
+79 /*class MyHashSet {
+80public:
+81    vector<bool> arr; // Boolean array
+82
+83    MyHashSet() {
+84        arr.resize(1000001, false);  // Initialize all values to false
+85    }
+86    
+87    void add(int key) {
+88        arr[key] = true;
+89    }
+90    
+91    void remove(int key) {
+92        arr[key] = false;
+93    }
+94    
+95    bool contains(int key) {
+96        return arr[key];
+97    }
+98};*/
