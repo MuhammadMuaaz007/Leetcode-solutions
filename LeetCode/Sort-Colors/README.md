@@ -20,3 +20,16 @@ Example 2:
 
 Input: nums = [2,0,1]
 Output: [0,1,2]
+
+
+DNF (Dutch National Flag) Problem – Definition:
+
+The Dutch National Flag problem is a classic algorithmic problem where you are given an array containing three distinct types of elements (for example, 0, 1, and 2) and the goal is to sort the array in a single pass such that all elements of the same type are grouped together.
+
+The name comes from the Dutch national flag, which has three colors arranged in order.
+
+The problem is commonly solved using three pointers (low, mid, high) to partition the array into three regions.
+
+In short:
+
+Sort an array of three distinct values in one pass and constant space, grouping identical values together.*/
