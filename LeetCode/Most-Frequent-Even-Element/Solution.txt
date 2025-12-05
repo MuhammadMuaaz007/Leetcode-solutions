@@ -1,0 +1,33 @@
+1class Solution {
+2public:
+3    int mostFrequentEven(vector<int>& nums) {
+4        unordered_map<int,int> freq;
+5        for(int num : nums) {
+6            if(num % 2 == 0) {
+7                freq[num]++;
+8            }
+9        }
+10        
+11        if(freq.empty()) return -1; // No even number found
+12        
+13        int ans = -1;
+14        int highestFreq = 0;
+15 
+16        for(auto &it : freq) {
+17            int number = it.first;
+18            int count = it.second;
+19            
+20            // Condition 1: bigger frequency
+21            // Condition 2: if same frequency, choose smaller number
+22            if(count > highestFreq || 
+23               (count == highestFreq && number < ans))
+24            {
+25                highestFreq = count;
+26                ans = number;
+27            }
+28        }
+29        
+30        return ans;
+31    }
+32};
+33
