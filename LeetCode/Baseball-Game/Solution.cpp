@@ -1,4 +1,4 @@
-Deque<Integer> stack = new ArrayDeque();class Solution {
+class Solution {
 public:
     int calPoints(vector<string>& ops) {
         vector<int> record;
