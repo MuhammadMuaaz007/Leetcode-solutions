@@ -1,38 +1,37 @@
-1#include <queue>
-2using namespace std;
-3
-4class MyStack {
-5private:
-6    queue<int> q;
-7
-8public:
-9    MyStack() {
-10    }
-11    
-12    void push(int x) {
-13        q.push(x);
-14        int n = q.size();
-15        // Rotate the queue to bring the new element to the front
-16        for (int i = 0; i < n - 1; i++) {
-17            q.push(q.front());
-18            q.pop();
-19        }
-20    }
-21    
-22    int pop() {
-23        if (q.empty()) return -1; 
-24        int topElement = q.front();
-25        q.pop();
-26        return topElement;
-27    }
-28    
-29    int top() {
-30        if (q.empty()) return -1;
-31        return q.front();
-32    }
-33    
-34    bool empty() {
-35        return q.empty();
-36    }
-37};
-38
+1
+2
+3class MyStack {
+4private:
+5    queue<int> q;
+6
+7public:
+8    MyStack() {
+9    }
+10    
+11    void push(int x) {
+12        q.push(x);
+13        int n = q.size();
+14        // Rotate the queue to bring the new element to the front
+15        for (int i = 0; i < n - 1; i++) {
+16            q.push(q.front());
+17            q.pop();
+18        }
+19    }
+20    
+21    int pop() {
+22        if (q.empty()) return -1; 
+23        int topElement = q.front();
+24        q.pop();
+25        return topElement;
+26    }
+27    
+28    int top() {
+29        if (q.empty()) return -1;
+30        return q.front();
+31    }
+32    
+33    bool empty() {
+34        return q.empty();
+35    }
+36};
+37
