@@ -1,21 +1,23 @@
-int hasDupAt(string s)
-{
-    int index = -1;
-    for(int i=0; i<s.length(); i++)
-    {
-        if(s[i]==s[i+1])
-        {
-            index = i;
-            break;
+
+ class Solution {
+ public:
+    string removeDuplicates(string s) {
+        stack<char> st;
+        
+        for(char c : s) {
+            if(!st.empty() && st.top() == c) {
+                st.pop();  // remove the duplicate
+            } else {
+                st.push(c);
+            }
         }
+
+        // Construct the result from stack
+        string result = "";
+        while(!st.empty()) {
+            result = st.top() + result;  // prepend because stack is LIFO
+            st.pop();
+        }
+        return result;
     }
-    return index;
-}
-string removeDuplicates(string s) 
-{
-    while (hasDupAt(s) >= 0)
-    {
-        s.erase(hasDupAt(s), 2);
-    }
-    return s;
-}
+ };
