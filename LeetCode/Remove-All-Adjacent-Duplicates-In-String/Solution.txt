@@ -1,0 +1,23 @@
+1
+2 class Solution {
+3 public:
+4    string removeDuplicates(string s) {
+5        stack<char> st;
+6        
+7        for(char c : s) {
+8            if(!st.empty() && st.top() == c) {
+9                st.pop();  // remove the duplicate
+10            } else {
+11                st.push(c);
+12            }
+13        }
+14
+15        // Construct the result from stack
+16        string result = "";
+17        while(!st.empty()) {
+18            result = st.top() + result;  // prepend because stack is LIFO
+19            st.pop();
+20        }
+21        return result;
+22    }
+23 };
