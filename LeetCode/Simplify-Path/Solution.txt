@@ -1,0 +1,38 @@
+1class Solution {
+2public:
+3    string simplifyPath(string path) {
+4        stack<string> st;
+5        string word = "";
+6
+7        for (int i = 0; i <= path.size(); i++) {
+8            if (i == path.size() || path[i] == '/') {
+9
+10                if (word == "" || word == ".") {
+11                    // do nothing
+12                }
+13                else if (word == "..") {
+14                    if (!st.empty())
+15                        st.pop();
+16                }
+17                else {
+18                    st.push(word);
+19                }
+20
+21                word = ""; // reset for next folder
+22            }
+23            else {
+24                word += path[i];
+25            }
+26        }
+27
+28        // build result
+29        string result = "";
+30        while (!st.empty()) {
+31            result = "/" + st.top() + result;
+32            st.pop();
+33        }
+34
+35        return result == "" ? "/" : result;
+36    }
+37};
+38
