@@ -1,5 +1,5 @@
-1 class Solution {
-2 public:
+1class Solution {
+2public:
 3    int largestRectangleArea(vector<int>& heights) {
 4        int n = heights.size();
 5        vector<int> left(n), right(n);
@@ -31,5 +31,5 @@
 31
 32        return maxArea;
 33    }
-34 };
+34};
 35
