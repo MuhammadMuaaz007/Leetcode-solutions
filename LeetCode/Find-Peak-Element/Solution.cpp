@@ -23,4 +23,3 @@
 23        return -1; // won't happen for valid inputs
 24    }
 25};
-26
