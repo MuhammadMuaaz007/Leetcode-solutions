@@ -9,8 +9,8 @@
 9 *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
 10 * };
 11 */
-12class Solution {
-13public:
+12 class Solution {
+13 public:
 14    TreeNode* invertTree(TreeNode* root) {
 15        if(root==NULL) return NULL;
 16        queue<TreeNode*>q;
@@ -28,4 +28,4 @@
 28        }
 29        return root;
 30    }
-31};
+31 };
