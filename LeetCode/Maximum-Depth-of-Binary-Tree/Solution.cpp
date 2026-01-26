@@ -23,3 +23,17 @@
 23    }
 24};
 25
+26// class Solution {
+27// public:
+28//     int maxDepth(TreeNode* root) {
+29//         if (root == NULL)
+30//             return 0;
+31
+32//         int leftDepth = maxDepth(root->left);
+33//         int rightDepth = maxDepth(root->right);
+34
+35//         return 1 + max(leftDepth, rightDepth);
+36//     }
+37// };
+38
+39
