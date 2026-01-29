@@ -1,1 +1,1 @@
-"# leetcode-solutions" 
+This repository contains solutions to various LeetCode problems across different difficulty levels—Easy, Medium, and Hard. The solutions are implemented in C++ (or whichever language you prefer) and are structured to help both beginners and advanced programmers understand the concepts behind each problem.
