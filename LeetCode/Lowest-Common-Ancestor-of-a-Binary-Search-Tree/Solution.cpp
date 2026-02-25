@@ -1,6 +1,15 @@
-[3,1,4,null,2]
-2
-3
-[5,3,6,2,4,null,null,1]
-1
-4
+class Solution {
+public:
+    TreeNode* lowestCommonAncestor(TreeNode* root, TreeNode* p, TreeNode* q) {
+        while (root != NULL) {
+            if (p->val < root->val && q->val < root->val) {
+                root = root->left;
+            } else if (p->val > root->val && q->val > root->val) {
+                root = root->right;
+            } else {
+                return root;
+            }
+        }
+        return NULL;
+    }
+};
