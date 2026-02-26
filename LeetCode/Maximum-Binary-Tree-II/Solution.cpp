@@ -1,16 +1,16 @@
-[5]
-3
-[5]
-7
-[5,2]
-1
-[5,2]
-6
-[3,2,1]
-4
-[6,3,null,2,null,1]
-5
-[1,null,2,null,3]
-4
-[4,1,3]
-2
+class Solution {
+public:
+    TreeNode* insertIntoMaxTree(TreeNode* root, int val) {
+        // If tree is empty or val is greater than root,
+        // val becomes the new root
+        if (root == nullptr || val > root->val) {
+            TreeNode* node = new TreeNode(val);
+            node->left = root;
+            return node;
+        }
+
+        // Otherwise, insert into the right subtree
+        root->right = insertIntoMaxTree(root->right, val);
+        return root;
+    }
+};
