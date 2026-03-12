@@ -1,7 +1,20 @@
-[3,3,2,0,1,0,0]
-[3,3,2,2,3,3,3,0,1,0,0,1,0,0,0]
-[2,3,3,1,1,0,1]
-[2,0,2,null,null,0,1]
-[2,1,3,null,null,1,0]
-[2,3,1,1,2,null,null,null,null,0,1]
-[2,3,1,1,2,null,null,null,null,0,1]
+class Solution {
+public:
+    bool evaluateTree(TreeNode* root) {
+        
+        // Leaf node
+        if(root->left == NULL && root->right == NULL) {
+            return root->val;
+        }
+
+        bool left = evaluateTree(root->left);
+        bool right = evaluateTree(root->right);
+
+        if(root->val == 2) {
+            return left || right;   // OR
+        }
+        else {
+            return left && right;   // AND
+        }
+    }
+};
