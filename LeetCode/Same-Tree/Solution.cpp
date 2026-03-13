@@ -1,16 +1,10 @@
-[1,2]
-[1,null,2]
-[1]
-[2]
-[1,null,2]
-[1,2]
-[1,null,2]
-[1,null,3]
-[1,null,null]
-[1,null,null]
-[]
-[]
-[1]
-[1,null,2]
-[1,null,2]
-[1]
+class Solution {
+public:
+    bool isSameTree(TreeNode* p, TreeNode* q) {
+        if (!p && !q) return true;          // both null
+        if (!p || !q) return false;         // one null
+        if (p->val != q->val) return false; // values differ
+
+        return isSameTree(p->left, q->left) && isSameTree(p->right, q->right);
+    }
+};
