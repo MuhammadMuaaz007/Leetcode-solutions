@@ -1,7 +1,7 @@
 1class Solution {
 2public:
 3    bool isPalindrome(int x) {
-4        string s = to_string(x);  // Fixed typo
+4        string s = to_string(x); 
 5
 6        int left = 0;
 7        int right = s.length() - 1;
