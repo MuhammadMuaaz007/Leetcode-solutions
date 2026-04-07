@@ -1,4 +1,4 @@
-
+// optimal solution
 class Solution {
 public:
  int findKthLargest(vector<int>& nums, int k) {
@@ -14,3 +14,8 @@ public:
     return minHeap.top();
 }
 };
+// second solution
+int findKthLargest(vector<int>& nums, int k) {
+    sort(nums.begin(), nums.end());     // Sort ascending
+    return nums[nums.size() - k];       // kth largest
+}
