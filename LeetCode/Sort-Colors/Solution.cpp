@@ -1,30 +1,30 @@
-1class Solution {
-2public:
-3    void sortColors(vector<int>& nums) {
-4        int low = 0;
-5        int mid = 0;
-6        int high = nums.size() - 1;
-7
-8        while (mid <= high) {
-9            if (nums[mid] == 0) {
-10                swap(nums[mid], nums[low]);
-11                low++;
-12                mid++;
-13            }
-14            else if (nums[mid] == 1) {
-15                mid++;
-16            }
-17            else { 
-18                // whenever at the last of the array or at the high position the sorting is done we not need to increament the mid because the sorted part is at high
-19                swap(nums[mid], nums[high]);
-20                high--;
-21                // mid is NOT incremented here
-22            }
-23        }
-24    }
-25};
-26
-27/*
+class Solution {
+public:
+    void sortColors(vector<int>& nums) {
+        int low = 0;
+        int mid = 0;
+        int high = nums.size() - 1;
+
+        while (mid <= high) {
+            if (nums[mid] == 0) {
+                swap(nums[mid], nums[low]);
+                low++;
+                mid++;
+            }
+            else if (nums[mid] == 1) {
+                mid++;
+            }
+            else { 
+                // whenever at the last of the array or at the high position the sorting is done we not need to increament the mid because the sorted part is at high
+                swap(nums[mid], nums[high]);
+                high--;
+                // mid is NOT incremented here
+            }
+        }
+    }
+};
+
+/*
 28
 29DNF (Dutch National Flag) Problem – Definition:
 30
